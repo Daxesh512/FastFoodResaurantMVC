@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FastFoodDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTbl">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="adminUser" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="adinPass" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\ASP.NET\FASTFOODRESAURANTMVC\FASTFOODRESAURANTMVC\APP_DATA\FASTFOODDB.MDF.dbo.RegisterTbl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RegisterTbl">
+          <Key>
+            <PropertyRef Name="personName" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="postalCode" />
+          </Key>
+          <Property Name="personName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="postalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\ASP.NET\FASTFOODRESAURANTMVC\FASTFOODRESAURANTMVC\APP_DATA\FASTFOODDB.MDF.dbo.TblBooking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblBooking">
+          <Key>
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="lastName" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="mobile" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="description" />
+          </Key>
+          <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\ASP.NET\FASTFOODRESAURANTMVC\FASTFOODRESAURANTMVC\APP_DATA\FASTFOODDB.MDF.dbo.TblContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblContact">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="subject" />
+            <PropertyRef Name="message" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subject" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FastFoodDBModelStoreContainer">
+          <EntitySet Name="AdminTbl" EntityType="Self.AdminTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterTbl" EntityType="Self.RegisterTbl" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[RegisterTbl].[personName] AS [personName], 
+[RegisterTbl].[userName] AS [userName], 
+[RegisterTbl].[phone] AS [phone], 
+[RegisterTbl].[password] AS [password], 
+[RegisterTbl].[postalCode] AS [postalCode]
+FROM [dbo].[RegisterTbl] AS [RegisterTbl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblBooking" EntityType="Self.TblBooking" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[TblBooking].[firstName] AS [firstName], 
+[TblBooking].[lastName] AS [lastName], 
+[TblBooking].[gender] AS [gender], 
+[TblBooking].[mobile] AS [mobile], 
+[TblBooking].[email] AS [email], 
+[TblBooking].[description] AS [description]
+FROM [dbo].[TblBooking] AS [TblBooking]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblContact" EntityType="Self.TblContact" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[TblContact].[name] AS [name], 
+[TblContact].[phone] AS [phone], 
+[TblContact].[subject] AS [subject], 
+[TblContact].[message] AS [message]
+FROM [dbo].[TblContact] AS [TblContact]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FastFoodDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTbl">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="adminUser" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adinPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterTbl">
+          <Key>
+            <PropertyRef Name="personName" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="postalCode" />
+          </Key>
+          <Property Name="personName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="postalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblBooking">
+          <Key>
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="lastName" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="mobile" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="description" />
+          </Key>
+          <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblContact">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="subject" />
+            <PropertyRef Name="message" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FastFoodDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTbls" EntityType="Self.AdminTbl" />
+          <EntitySet Name="RegisterTbls" EntityType="Self.RegisterTbl" />
+          <EntitySet Name="TblBookings" EntityType="Self.TblBooking" />
+          <EntitySet Name="TblContacts" EntityType="Self.TblContact" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FastFoodDBModelStoreContainer" CdmEntityContainer="FastFoodDBEntities">
+          <EntitySetMapping Name="AdminTbls">
+            <EntityTypeMapping TypeName="FastFoodDBModel.AdminTbl">
+              <MappingFragment StoreEntitySet="AdminTbl">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="adminUser" ColumnName="adminUser" />
+                <ScalarProperty Name="adinPass" ColumnName="adinPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterTbls">
+            <EntityTypeMapping TypeName="FastFoodDBModel.RegisterTbl">
+              <MappingFragment StoreEntitySet="RegisterTbl">
+                <ScalarProperty Name="personName" ColumnName="personName" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBookings">
+            <EntityTypeMapping TypeName="FastFoodDBModel.TblBooking">
+              <MappingFragment StoreEntitySet="TblBooking">
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblContacts">
+            <EntityTypeMapping TypeName="FastFoodDBModel.TblContact">
+              <MappingFragment StoreEntitySet="TblContact">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
